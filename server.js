@@ -25,23 +25,23 @@ app.use('/api', authRoutes);
 // Example: A route defined as `/login` in `authRoutes` would be accessible as `/api/login`.
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        // If the connection is successful, the server starts listening on the defined port
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-            console.log("mongodb connected successfully")
-        });
-    })
-    .catch(err => console.error(err));
-// mongoose.connect(process.env.MONGODB_URI)
+// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 //     .then(() => {
+//         // If the connection is successful, the server starts listening on the defined port
 //         app.listen(PORT, () => {
 //             console.log(`Server is running on port ${PORT}`);
-//             console.log("mongodb connected successfully");
+//             console.log("mongodb connected successfully")
 //         });
 //     })
 //     .catch(err => console.error(err));
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+            console.log("mongodb connected successfully");
+        });
+    })
+    .catch(err => console.error(err));
 
 // Logs errors if the database connection fails. Useful for debugging issues like incorrect URI or network problems.
 
