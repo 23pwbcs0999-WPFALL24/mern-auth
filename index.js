@@ -17,7 +17,15 @@ app.use(express.json());
 
 
 app.use('/api', authRoutes);
+// Fallback route for root access
+app.get('/', (req, res) => {
+    res.send('Welcome to the MERN Auth Backend! Use /api/signup, /api/signin, or /api/protected to interact with the API.');
+});
 
+// Handle undefined routes
+app.use((req, res) => {
+    res.status(404).send('Error 404: Route not found. Please use the correct API endpoints.');
+});
 
 // MongoDB connection
 
