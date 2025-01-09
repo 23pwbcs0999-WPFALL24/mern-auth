@@ -1,27 +1,27 @@
 {
     "version": 2,
-    "routes": [
-        {
-            "src": "/api/signup",
-            "dest": "/routes/auth.js"
-        },
-        {
-            "src": "/api/signin",
-            "dest": "/routes/auth.js"
-        },
-        {
-            "src": "/api/protected",
-            "dest": "/routes/auth.js"
-        }
-    ],
     "builds": [
         {
             "src": "index.js",
             "use": "@vercel/node"
         }
     ],
+    "routes": [
+        {
+            "src": "/api/signup",
+            "dest": "index.js"
+        },
+        {
+            "src": "/api/signin",
+            "dest": "index.js"
+        },
+        {
+            "src": "/api/protected",
+            "dest": "index.js"
+        }
+    ],
     "env": {
-        "MONGODB_URI": "mongodb+srv://afnanabid54:afnanMuhammad54@auth-system.ej9em.mongodb.net/?retryWrites=true&w=majority&appName=auth-system",
-        "JWT_SECRET": "mySuperSecretKey123!@#"
+        "MONGODB_URI": "@mongodb_uri",
+        "JWT_SECRET": "@jwt_secret"
     }
 }
